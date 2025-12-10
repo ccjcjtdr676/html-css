@@ -1,4 +1,6 @@
-/* ----- CONFIGURAÇÕES GERAIS ----- */
+/* ================================
+        CONFIGURAÇÕES GERAIS
+================================ */
 * {
     margin: 0;
     padding: 0;
@@ -10,14 +12,17 @@ body {
     background-color: #0b0e11;
     color: #e1e1e1;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* ----- HEADER ----- */
+/* ================================
+               HEADER
+================================ */
 .header {
     width: 100%;
     padding: 20px 5%;
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(5px);
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(6px);
     position: fixed;
     top: 0;
     z-index: 100;
@@ -36,6 +41,7 @@ body {
     text-decoration: none;
 }
 
+/* MENU DESKTOP */
 .menu {
     display: flex;
     list-style: none;
@@ -46,14 +52,45 @@ body {
     color: #e1e1e1;
     text-decoration: none;
     font-weight: 400;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .menu a:hover {
     color: #4fa3ff;
 }
 
-/* ----- HERO ----- */
+/* HAMBÚRGUER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: 0.4s;
+}
+
+/* Animação do X */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ================================
+                HERO
+================================ */
 .hero {
     padding-top: 120px;
     padding-bottom: 60px;
@@ -82,7 +119,7 @@ body {
 .btn-cta {
     margin-top: 20px;
     display: inline-block;
-    padding: 10px 25px;
+    padding: 12px 28px;
     background: #4fa3ff;
     color: #000;
     border-radius: 6px;
@@ -92,7 +129,7 @@ body {
 }
 
 .btn-cta:hover {
-    opacity: 0.7;
+    opacity: 0.75;
 }
 
 .hero-img {
@@ -102,7 +139,9 @@ body {
     box-shadow: 0 0 20px #4fa3ff70;
 }
 
-/* ----- SEÇÕES ----- */
+/* ================================
+                SEÇÕES
+================================ */
 .section {
     padding: 70px 5%;
     text-align: center;
@@ -118,16 +157,18 @@ body {
     color: #4fa3ff;
 }
 
-/* ----- HABILIDADES ----- */
+/* ================================
+               HABILIDADES
+================================ */
 .skills-grid {
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 15px;
+    gap: 20px;
 }
 
 .skill {
-    padding: 12px;
+    padding: 14px;
     background: #0f131a;
     border: 1px solid #4fa3ff20;
     border-radius: 8px;
@@ -139,7 +180,14 @@ body {
     transform: translateY(-4px);
 }
 
-/* ----- PROJETOS ----- */
+.skill-icon {
+    width: 45px;
+    margin-bottom: 8px;
+}
+
+/* ================================
+                PROJETOS
+================================ */
 .projects-grid {
     margin-top: 30px;
     display: grid;
@@ -166,7 +214,9 @@ body {
     margin-bottom: 10px;
 }
 
-/* ----- FOOTER ----- */
+/* ================================
+               FOOTER
+================================ */
 .footer {
     padding: 30px;
     text-align: center;
@@ -178,4 +228,95 @@ body {
     width: 30px;
     filter: invert(100%);
     margin-left: 10px;
+    transition: 0.3s;
+}
+
+.footer img:hover {
+    opacity: 0.7;
+}
+
+/* ===========================================
+             RESPONSIVIDADE MOBILE
+=========================================== */
+@media (max-width: 768px) {
+
+    /* Ativa o hambúrguer */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Menu MOBILE */
+    .menu {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 220px;
+        padding: 30px 20px;
+        background: #0e1116;
+        border-left: 2px solid #4fa3ff40;
+        border-bottom: 2px solid #4fa3ff40;
+        border-radius: 0 0 0 12px;
+        flex-direction: column;
+        gap: 20px;
+        display: none;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    /* Hero */
+    .hero {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-img {
+        width: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 26px;
+    }
+
+    .btn-cta {
+        padding: 10px 22px;
+    }
+
+    .hero-img {
+        width: 190px;
+    }
+}
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+    }
+
+    .menu {
+        position: absolute;
+        top: 75px;
+        right: 0;
+        width: 220px;
+        padding: 25px;
+        background: #0e1116;
+        border-left: 2px solid #4fa3ff40;
+        border-bottom: 2px solid #4fa3ff40;
+        border-radius: 0 0 0 12px;
+
+        display: none;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    /* Mostra o menu quando o checkbox está marcado */
+    #menu-toggle:checked ~ .menu {
+        display: flex;
+    }
 }
